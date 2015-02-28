@@ -25,6 +25,9 @@
             {{outlet}}
         </script>
 
+        <script type="text/x-handlebars" id="components/parts">
+        </script>
+
         <script type="text/x-handlebars" id="catalog">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -43,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        {{#each part in model}}
+                        {{#each part in model.mainParts}}
                            <li>{{#link-to part.route}}{{part.name}}{{/link-to}}</li>
                         {{/each}}
 
@@ -51,15 +54,10 @@
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Other parts <span class="caret"></span></a>
 
                           <ul class="dropdown-menu" role="menu">
-
-                            {{#each part in model}}
-                               <li>{{#link-to part.route}}{{part.name}}{{/link-to}}</li>
+                            {{#each part in model.otherParts}}
+                                <li>{{#link-to part.route}}{{part.name}}{{/link-to}}</li>
                             {{/each}}
-                        
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                       
                           </ul>
                         </li>
 
@@ -78,15 +76,100 @@
 
             </nav>
 
-            {{outlet}}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        Vendors
+
+                        {{vendors-panel}}
+
+                    </div>
+
+                    <div class="col-md-7">{{outlet}}</div>
+
+                    <div class="col-md-3">
+
+                        {{filters-panel}}
+
+                    </div>
+                </div>
+            </div>
+
+        </script>
+
+        <script type="text/x-handlebars" id="components/vendors-panel">
+
+            <ul>
+                {{#each vendor in model.vendors}}
+                    <li>{{vendor.name}}</li>
+                {{/each}}
+            </ul>
+
+        </script>
+
+        <script type="text/x-handlebars" id="components/filters-panel">
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filters</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="email">Please choose your favourite vendor:</label>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                    Vendors
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                
+                                {{#each vendor in model.vendors}}
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="#">{{vendor.name}}</a>
+                                    </li>
+                                {{/each}}
+                            
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </script>
 
         <script type="text/x-handlebars" id="forks">
-            <ul>
-                {{#each fork in model}}
-                    <li>{{fork.vendor}} {{fork.name}} {{fork.modelName}}</li>
-                {{/each}}
-            </ul>
+           
+            {{#each fork in model}}
+            <div class="panel">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2"> 
+                            <input type="checkbox" id="myCheck">
+                        </div>
+                        <div class="col-md-2">
+                        <img src="" class="img-responsive" alt="I AM A PICTURE!"> 
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <a href="#">{{fork.vendor}} {{fork.name}} {{fork.modelName}}</a>
+                            </strong>
+                            <div>
+                            I AM A DESCRIPTION!!!
+                            </div>
+                        </div>
+                        <div class="col-md-2"> 
+                            <a href="#" class="btn btn-info btn-sm"> Yeah!</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            
             {{outlet}}
         </script>
 

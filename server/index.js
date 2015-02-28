@@ -7,7 +7,7 @@ app.use(orm.express('mysql://root:mysql@127.0.0.1/bikespec', {
         models.forks = db.define('forks', {
 
             id          : Number,
-            vendor      : String,
+            vendor      : Number,
             name        : String,
             modelName   : String,
             year        : Number
@@ -18,7 +18,16 @@ app.use(orm.express('mysql://root:mysql@127.0.0.1/bikespec', {
 
             id          : Number,
             name        : String,
+            main        : Number,
             route       : String
+
+        });
+
+
+        models.vendors = db.define('vendors', {
+
+            id          : Number,
+            name        : String
 
         });
 
@@ -64,6 +73,20 @@ app.get('/api/parts', function (req, res) {
             res.send(404).send(err);
         } else {
             res.send({parts : _parts});
+        }
+
+    });
+    
+});
+
+app.get('/api/vendors', function (req, res) {
+
+    req.models.vendors.find(function (err, _vendors) {
+
+        if(err) {
+            res.send(404).send(err);
+        } else {
+            res.send({vendors : _vendors});
         }
 
     });
