@@ -1,0 +1,8 @@
+server/public/js/libs
+.DS_Store
+node_modules/
+server/.DS_Store
+server/public/.DS_Store
+server/public/README.md
+server/public/js/.DS_Store
+server/public/tests/
