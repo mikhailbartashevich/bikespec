@@ -1,0 +1,9 @@
+{
+    "name": "bikespec",
+    "version": "0.0.1",
+    "dependencies": {
+
+        "ember-data" : "1.0.0-beta.15"
+
+    }
+}
