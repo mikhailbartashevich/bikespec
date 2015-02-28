@@ -3,7 +3,9 @@
     "version": "0.0.1",
     "dependencies": {
 
-        "ember-data" : "1.0.0-beta.15"
+        "ember-data" : "1.0.0-beta.15",
+        "bootstrap"  : "3.3.2"
+
 
     }
 }
