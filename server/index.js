@@ -14,6 +14,14 @@ app.use(orm.express('mysql://root:mysql@127.0.0.1/bikespec', {
 
         });
 
+        models.parts = db.define('parts', {
+
+            id          : Number,
+            name        : String,
+            route       : String
+
+        });
+
         next();
     }
 }));
@@ -45,7 +53,20 @@ app.get('/api/forks', function (req, res) {
         }
 
     });
+    
+});
 
+app.get('/api/parts', function (req, res) {
+
+    req.models.parts.find(function (err, _parts) {
+
+        if(err) {
+            res.send(404).send(err);
+        } else {
+            res.send({parts : _parts});
+        }
+
+    });
     
 });
 
