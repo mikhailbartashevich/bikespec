@@ -30,12 +30,9 @@ var options = {
     }
 };
 
-
 app.use('/home', express.static(__dirname + '/public/index.html'));
 
 app.use(express.static(__dirname + '/public', options));
-
-
 
 app.get('/api/forks', function (req, res) {
 
@@ -44,7 +41,7 @@ app.get('/api/forks', function (req, res) {
         if(err) {
             res.send(404, err);
         } else {
-            res.send(_forks);
+            res.send({forks : _forks});
         }
 
     });
