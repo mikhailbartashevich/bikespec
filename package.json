@@ -1,16 +1,29 @@
 {
   "name": "bikespec",
-  "version": "0.0.0",
-  "description": "",
-  "main": "server/index.js",
+  "version": "0.0.1",
+  "description": "Bike specific catalog",
+  "repository": "https://github.com/mikhailbartashevich/bikespec.git",
+  "main": "app/index.js",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "author": "",
   "license": "MIT",
+
   "dependencies": {
+    "bower": "~1.3.12",
+    "grunt-cli": "~0.1.13"
+  },
+
+  "devDependencies": {
     "mysql": "~2.0.0-alpha9",
     "express": "~4.12.0",
-    "orm": "~2.1.22"
+    "orm": "~2.1.22",
+    "grunt-ember-templates": "~0.4.14",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "load-grunt-tasks": "~0.1.0"
   }
 }

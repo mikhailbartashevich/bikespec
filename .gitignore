@@ -1,8 +1,8 @@
-server/public/js/libs
+app/public/js/libs
 .DS_Store
 node_modules/
-server/.DS_Store
-server/public/.DS_Store
-server/public/README.md
-server/public/js/.DS_Store
-server/public/tests/
+app/.DS_Store
+app/public/.DS_Store
+app/public/README.md
+app/public/js/.DS_Store
+app/public/tests/

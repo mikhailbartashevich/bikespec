@@ -1,8 +1,9 @@
-var express = require('express');
-var orm = require('orm');
-var app = express();
+var express = require('express'),
+orm = require('orm'),
+app = express(),
+config = require('./server/config')();
 
-app.use(orm.express('mysql://root:mysql@127.0.0.1/bikespec', {
+app.use(orm.express(config.db, {
     define: function (db, models, next) {
         models.forks = db.define('forks', {
 
@@ -35,21 +36,10 @@ app.use(orm.express('mysql://root:mysql@127.0.0.1/bikespec', {
     }
 }));
 
-var options = {
-    dotfiles: 'ignore',
-    etag: false,
-    extensions: ['htm', 'html'],
-    index: false,
-    maxAge: '1d',
-    redirect: false,
-    setHeaders: function (res, path, stat) {
-        res.set('x-timestamp', Date.now())
-    }
-};
 
-app.use('/home', express.static(__dirname + '/public/index.html'));
+app.use('/bikespec', express.static(__dirname + '/public/index.html'));
 
-app.use(express.static(__dirname + '/public', options));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/api/forks', function (req, res) {
 
